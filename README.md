@@ -15,14 +15,15 @@ Logging and timing tests for Python functions.
 		import time
 		time.sleep(1)
 		
-	functionA()
+	function_A()
 	
 	@log_this
 	def function_B():
 		import time
 		time.sleep(1)
 		
-	functionB()
+	function_B()
+	
 # log_this()
 Logging decorator - Logs function name, args, kwargs, first encountered error, function time and execution time to 'filename_log.json' if log file exists. If log file does not exist, it creates one
 
@@ -31,11 +32,11 @@ Logging decorator - Logs function name, args, kwargs, first encountered error, f
 		import time
 		time.sleep(1)
 		
-	>>> functionA()
+	>>> function_A()
 		
 	>>> [Logged function_A in path/to/file_log.json]
 	
-# show_log()
+# show_log(errors=False)
 Returns current log file contents. If errors argument is True, returns only log file contents with encountered errors
 
 	>>> log = show_log()
@@ -49,7 +50,7 @@ Returns current log file contents. If errors argument is True, returns only log 
 	>>> [{'name': 'function_A', 'args': [], 'kwargs': {}, 'error': None, 'timer': 1.0011684894561768, 'timestamp': '2018/1/21 - 16:46:21'}, 			
 	     {'name': 'function_B', 'args': [], 'kwargs': {}, 'error': None, 'timer': 1.000422716140747, 'timestamp': '2018/1/21 - 16:51:36'}]
     
- # time_log()
+ # time_log(sort=False)
  Calculates mean time of each function. If sort argument is True, returns a sorted dictionary of functions from fastest to slowest -- /function: [mean_time, instances of function]/
  
     
