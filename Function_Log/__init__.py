@@ -13,7 +13,7 @@ def time_this(times, function, *args, **kwargs):
         t1 = time.process_time()
         result = function(*args,**kwargs)
         t2 = time.process_time()
-        print(t2-t1)
+        #print(t2-t1)
         time_list.append(t2-t1)
 
     average_time = sum(time_list)/len(time_list)
