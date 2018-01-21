@@ -10,21 +10,7 @@ Logging and timing tests for Python functions.
 
 	from function_log import log_this, show_log, time_log, time_this
 	
-	@log_this
-	def function_A():
-		import time
-		time.sleep(1)
-		
-	function_A()
-	
-	@log_this
-	def function_B():
-		import time
-		time.sleep(1)
-		
-	function_B()
-	
-# log_this()
+# @log_this()
 Logging decorator - Logs function name, args, kwargs, first encountered error, function time and execution time to 'filename_log.json' if log file exists. If log file does not exist, it creates one
 
 	@log_this
@@ -32,9 +18,18 @@ Logging decorator - Logs function name, args, kwargs, first encountered error, f
 		import time
 		time.sleep(1)
 		
+	@log_this
+	def function_B():
+		import time
+		time.sleep(1)
+		
 	>>> function_A()
 		
 	>>> [Logged function_A in path/to/file_log.json]
+	
+	>>> function_B()
+		
+	>>> [Logged function_B in path/to/file_log.json]
 	
 # show_log(errors=False)
 Returns current log file contents. If errors argument is True, returns only log file contents with encountered errors
@@ -61,10 +56,19 @@ Returns current log file contents. If errors argument is True, returns only log 
 	    
 	>>> function_times
 	
-	>>> {'function_A': [1.000795602798462, 2], 'function_B': [1.000351905822754, 1]}
+	>>> {'function_A': [1.000795602798462, 1], 'function_B': [1.000351905822754, 1]}
 	
-# time_this()
-Timing function - prints function time without logging. Returns original function output -- /time_this(times, function, *args, **kwargs)/
+	>>> sorted_function_times = time_log(True)
+	
+	>>> function_B: [1.000351905822754, 1]
+	    function_A: [1.000795602798462, 1]
+	    
+	>>> function_times
+	
+	>>> {'function_B': [1.000351905822754, 1], 'function_A': [1.000795602798462, 1]}
+	
+# time_this(times, function, *args, **kwargs)
+Timing function - prints function time without logging. Returns original function output -- /time_this(times to execute function, function, *args, **kwargs)/
 
 	def function_A(a,b):
 		a**b
