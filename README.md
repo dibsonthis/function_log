@@ -68,7 +68,7 @@ Returns current log file contents. If errors argument is True, returns only log 
 	>>> {'function_B': [1.000351905822754, 1], 'function_A': [1.000795602798462, 1]}
 	
 # time_this(times, function, *args, **kwargs)
-Timing function - prints function time without logging. Returns original function output -- /time_this(times to execute function, function, *args, **kwargs)/
+Timing function - prints function time without logging -- /time_this(times to execute function, function, *args, **kwargs)/
 
 	def function_A(a,b):
 		a**b
