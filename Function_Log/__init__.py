@@ -10,9 +10,10 @@ def time_this(times, function, *args, **kwargs):
     print('\n### Calculating Average Function Time ###')
 
     for i in range(times):
-        t1 = time.clock()
-        function(*args,**kwargs)
-        t2 = time.clock()
+        t1 = time.process_time()
+        result = function(*args,**kwargs)
+        t2 = time.process_time()
+        print(t2-t1)
         time_list.append(t2-t1)
 
     average_time = sum(time_list)/len(time_list)
