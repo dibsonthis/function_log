@@ -51,8 +51,8 @@ Returns current log file contents. If errors argument is True, returns only log 
 	>>> [{'name': 'function_A', 'args': [], 'kwargs': {}, 'error': None, 'timer': 1.0011684894561768, 'timestamp': '2018/1/21 - 16:46:21'}, 			
 	     {'name': 'function_B', 'args': [], 'kwargs': {}, 'error': None, 'timer': 1.000422716140747, 'timestamp': '2018/1/21 - 16:51:36'}]
     
- # time_log
-    Calculates mean time of each function. If sort argument is True, returns a sorted dictionary of functions from fastest to slowest -- /function: [mean_time, instances of function]/
+ # time_log()
+ Calculates mean time of each function. If sort argument is True, returns a sorted dictionary of functions from fastest to slowest -- /function: [mean_time, instances of function]/
     
     	>>> function_times = time_log()
 	
@@ -62,3 +62,19 @@ Returns current log file contents. If errors argument is True, returns only log 
 	>>> function_times
 	
 	>>> {'function_A': [1.000795602798462, 2], 'function_B': [1.000351905822754, 1]}
+	
+# time_this()
+Timing function - prints function time without logging. Returns original function output -- /time_this(times, function, *args, **kwargs)/
+
+	def function_A(a,b):
+		a**b
+		
+	>>> function_A_time = time_this(10,function_A,100,10000)
+	
+	>>> ### Calculating Average Function Time ###
+	
+	    [Executed: 10 - Average Time: 0.0006852515631798894]
+	    
+	>>> function_A_time
+	
+	>>> 0.0006852515631798894
