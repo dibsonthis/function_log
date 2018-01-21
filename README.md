@@ -51,8 +51,9 @@ Returns current log file contents. If errors argument is True, returns only log 
     
  # time_log()
  Calculates mean time of each function. If sort argument is True, returns a sorted dictionary of functions from fastest to slowest -- /function: [mean_time, instances of function]/
+ 
     
-    	>>> function_times = time_log()
+ 	>>> function_times = time_log()
 	
 	>>> function_A: [1.000795602798462, 1]
 	    function_B: [1.000351905822754, 1]
