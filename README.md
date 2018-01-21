@@ -46,7 +46,7 @@ Returns current log file contents. If errors argument is True, returns only log 
 	     {'name': 'function_B', 'args': [], 'kwargs': {}, 'error': None, 'timer': 1.000422716140747, 'timestamp': '2018/1/21 - 16:51:36'}]
     
  # time_log(sort=False)
- Calculates mean time of each function. If sort argument is True, returns a sorted dictionary of functions from fastest to slowest
+ Calculates mean time of each function and returns a dictionary of functions with function time and number of function iterations. If sort argument is True, returns a sorted dictionary of functions from fastest to slowest
  
     
  	>>> function_times = time_log()
