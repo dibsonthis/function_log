@@ -100,7 +100,7 @@ def show_log(errors=False):
         print('\nError: No log file at path {} exists.\nMake sure the "log_this" decorator is being used on at least one function within this file. If it is, make sure to run at least one instance of the function to initiate the creation of the log file.\n'.format(sys.argv[0][:-3] + '_log.json'))
 
 def time_log(sort = False):
-    '''Calculates mean time of each function. If sort argument is True, returns a sorted dictionary of functions from fastest to slowest -- /function: [mean_time, instances of function]/'''
+    '''Calculates mean time of each function and returns a dictionary of functions with function time and number of function iterations. If sort argument is True, returns a sorted dictionary of functions from fastest to slowest -- /function: [mean_time, instances of function]/'''
 
     import json
     import sys
