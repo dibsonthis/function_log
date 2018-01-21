@@ -38,11 +38,12 @@ Logging decorator - Logs function name, args, kwargs, first encountered error, f
 # show_log()
 Returns current log file contents. If errors argument is True, returns only log file contents with encountered errors
 
-   	 >>> log = show_log()
+	>>> log = show_log()
     
-    	 >>> 0 - {'name': 'function_A', 'args': [], 'kwargs': {}, 'error': None, 'timer': 1.0011684894561768, 'timestamp': '2018/1/21 - 16:46:21'}
+	>>> 0 - {'name': 'function_A', 'args': [], 'kwargs': {}, 'error': None, 'timer': 1.0011684894561768, 'timestamp': '2018/1/21 - 16:46:21'}
 	     1 - {'name': 'function_B', 'args': [], 'kwargs': {}, 'error': None, 'timer': 1.000422716140747, 'timestamp': '2018/1/21 - 16:51:36'}
 		
+
 	>>> log
 	
 	>>> [{'name': 'function_A', 'args': [], 'kwargs': {}, 'error': None, 'timer': 1.0011684894561768, 'timestamp': '2018/1/21 - 16:46:21'}, 			
