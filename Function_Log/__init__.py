@@ -23,49 +23,53 @@ def time_this(times, function, *args, **kwargs):
     return average_time
 
 
-def log_this(function):
+def log_this(logfuncarguments=True):
     '''Logging decorator - Logs function name, args, kwargs, first encountered error, function time and execution time to 'filename_log.json' if log file exists. If log file does not exist, it creates one'''
 
-    @wraps(function)
-    def wrapper(*args, **kwargs):
-        import time
-        import json
-        import sys
-        import datetime
+    def inner_function(function):
+        @wraps(function)
+        def wrapper(*args, **kwargs):
+            import time
+            import json
+            import sys
+            import datetime
 
-        timestamp = datetime.datetime.now()
-        timestamp = '{}/{}/{} - {}:{}:{}'.format(timestamp.year, timestamp.month, timestamp.day, timestamp.hour, timestamp.minute, timestamp.second)
+            timestamp = datetime.datetime.now()
+            timestamp = '{}/{}/{} - {}:{}:{}'.format(timestamp.year, timestamp.month, timestamp.day, timestamp.hour, timestamp.minute, timestamp.second)
 
-        try:
-            t1 = time.time()
-            result = function(*args,**kwargs)
-            t2 = time.time()
-            error = None
-            timed = t2-t1
+            try:
+                t1 = time.time()
+                result = function(*args,**kwargs)
+                t2 = time.time()
+                error = None
+                timed = t2-t1
 
-        except Exception as e:
-            error = type(e).__name__
-            timed = None
+            except Exception as e:
+                error = type(e).__name__
+                timed = None
 
-        arguments = {
+            arguments = {
 
-                'name': function.__name__,
-                'args': args,
-                'kwargs': kwargs,
-                'error': error,
-                'timer': timed,
-                'timestamp': timestamp
-        }
+                    'name': function.__name__,
+                    'error': error,
+                    'timer': timed,
+                    'timestamp': timestamp
+            }
 
-        with open(sys.argv[0][:-3] + '_log.json', 'a') as logger:
-            json.dump(arguments,logger)
-            logger.write('\n')
+            if logfuncarguments:
+                arguments['args'] = args
+                arguments['kwargs'] = kwargs
 
-        print('\n[Logged '+ function.__name__ + ' in ' + sys.argv[0][:-3] + '_log.json]\n')
+            with open(sys.argv[0][:-3] + '_log.json', 'a') as logger:
+                json.dump(arguments,logger)
+                logger.write('\n')
 
-        return function(*args,**kwargs)
+            print('\n[Logged '+ function.__name__ + ' in ' + sys.argv[0][:-3] + '_log.json]\n')
 
-    return wrapper
+            return function(*args,**kwargs)
+
+        return wrapper
+    return inner_function
 
 def show_log(errors=False):
     '''Returns current log file contents. If errors argument is True, returns only log file contents with encountered errors'''
