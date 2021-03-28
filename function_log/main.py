@@ -41,7 +41,7 @@ def log_this(logfuncarguments=True, filename_log=None, path_log=''):
     def inner_function(function):
         @wraps(function)
         def wrapper(*args, **kwargs):
-            print(args, kwargs)
+
             timestamp = datetime.datetime.now()
             timestamp = '{}/{}/{} - {}:{}:{}'.format(timestamp.year, timestamp.month, timestamp.day, timestamp.hour,
                                                      timestamp.minute, timestamp.second)
