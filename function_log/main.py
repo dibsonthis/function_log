@@ -1,5 +1,7 @@
 from functools import wraps
 
+__all__ = ['time_this', 'log_this', 'show_log', 'time_log']
+
 def time_this(times, function, *args, **kwargs):
     '''Timing function - prints function time without logging -- /time_this(times, function, *args, **kwargs)/'''
 
