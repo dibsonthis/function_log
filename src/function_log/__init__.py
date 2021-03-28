@@ -1,5 +1,5 @@
-import src.function_log.main
-from src.function_log.main import *
+import function_log.main
+from function_log.main import *
 
 __all__ = (main.__all__)
 
