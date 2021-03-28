@@ -1,9 +1,8 @@
 import pandas as pd
 import pytest
 
-# from src.function_log.main import log_this
-# from .src.function_log import log_this
 from function_log import log_this
+
 
 # helper functions to test the decorator's behavior with its new arguments.
 @log_this(False)
@@ -40,4 +39,3 @@ def test_log_this_dataframe_arg_with_logfuncargumentsistrueexplicit_raisestypeer
         fakefunction_argflagtrueexplicit(df=df)
 
 # %%
-
