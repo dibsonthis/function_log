@@ -6,5 +6,4 @@ setup(name='function_log',
       url='https://github.com/chuffer/function_log',
       license='MIT',
       packages=['function_log'],
-      package_dir = {'': 'src'},
       zip_safe=False)
