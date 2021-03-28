@@ -35,7 +35,7 @@ def _get_filename_log(path_log, filename_log):
     return path_log + filename_log
 
 
-def log_this(logfuncarguments=True, filename_log=None, path_log=''):
+def log_this(logfuncarguments=True, filename_log=None, path_log='', printupdates=False):
     '''Logging decorator - Logs function name, args, kwargs, first encountered error, function time and execution time to filename_log if log file exists. If log file does not exist, it creates one'''
 
     def inner_function(function):
@@ -74,7 +74,8 @@ def log_this(logfuncarguments=True, filename_log=None, path_log=''):
                 json.dump(arguments, logger)
                 logger.write('\n')
 
-            print(f"\n[Logged {function.__name__} in {filename_log_updated}]\n")
+            if printupdates:
+                print(f"\n[Logged {function.__name__} in {filename_log_updated}]\n")
 
             return function(*args, **kwargs)
 
@@ -100,6 +101,7 @@ def show_log(errors=False, path_log='', filename_log=None):
             for i, v in enumerate(arguments):
                 if v['error'] != None:
                     error_list.append(v)
+
                     print('\n {} - {} \n'.format(i, v))
 
             return error_list
